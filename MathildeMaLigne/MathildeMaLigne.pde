@@ -12,9 +12,10 @@ void setup () {
   
   }
 
-void drawPlayerAt( int x , int y ){
-  rect( x, y, 7, 60);
 
+void drawPlayerAt( int x , int y , color c){
+  fill(c);
+  rect( x, y, 7, 60);
   
 }
 
@@ -84,8 +85,8 @@ void players (){
       yPlayer2 = 440 ;
   }
   
-  drawPlayerAt ( 30, yPlayer1);
-  drawPlayerAt (670 , yPlayer2);
+  drawPlayerAt ( 30, yPlayer1, color(0, 0, 255));
+  drawPlayerAt (670 , yPlayer2, color(0, 255, 255));
   
 }
 

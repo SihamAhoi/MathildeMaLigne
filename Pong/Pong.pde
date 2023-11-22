@@ -1,15 +1,17 @@
-
+//The players
 int yPlayer1 = 0;
 int yPlayer2 = 0;
 
 int Player1Increment = 0;
 int Player2Increment = 0;
 
+//The bar
 int barWidth = 14;
 int barHeight = 90;
 int xBar1 = 30;
 int xBar2 = 700 - 30 - barWidth;
 
+//The ball
 int xCercle;
 int yCercle;
 
@@ -29,11 +31,11 @@ void setup () {
   yCercleIncrement = (int)random(ballSpeed) - ballSpeed / 2;
   
   if(xCercleIncrement == 0) {
-    xCercleIncrement = 1;
+     xCercleIncrement = 1;
   }
 
   if(yCercleIncrement == 0) {
-    yCercleIncrement = 1;
+     yCercleIncrement = 1;
   }
   
 }
@@ -48,44 +50,35 @@ void drawPlayerAt( int x , int y , color c){
 
 
 void keyPressed(){
-int Speed = 10;
+  int Speed = 10;
 
   if(key == 'A' || key == 'a') { //player 1 monter
-   //  println("touche A"); 
-   Player1Increment = -Speed;
+     //  println("touche A"); 
+      Player1Increment = -Speed;
    
-}
-  
-  else if (key == 'Q'|| key == 'q') { //player 1 descendre
-   // println("touche Q"); 
-   Player1Increment = +Speed ;
+    }else if (key == 'Q'|| key == 'q') { //player 1 descendre
+     // println("touche Q"); 
+      Player1Increment = +Speed ;
    
-}
-
-  else if (key == 'P'|| key == 'p') { //player 2 monter
-  Player2Increment = -Speed ;
+    }else if (key == 'P'|| key == 'p') { //player 2 monter
+      Player2Increment = -Speed ;
   
-}
+    }else if (key == 'M'|| key == 'm') { //player 2 descendre
+      Player2Increment = +Speed ; 
 
-  else if (key == 'M'|| key == 'm') { //player 2 descendre
-  Player2Increment = +Speed ; 
-
-}
+    }
+    
 }
 
 
 void keyReleased(){
   
    if(key == 'A' || key == 'a'|| key == 'Q'|| key == 'q') { 
-   Player1Increment = 0;
-   
-}
-
-  else if (key == 'P'|| key == 'p'|| key == 'M'|| key == 'm') { 
-  Player2Increment = 0;
-  
-
-}
+      Player1Increment = 0;
+    }else if (key == 'P'|| key == 'p'|| key == 'M'|| key == 'm') { 
+      Player2Increment = 0;
+ 
+    }
 
 }
 
@@ -97,15 +90,15 @@ void players (){
   
   if ( yPlayer1 < 0 ) {
      yPlayer1 = 0 ;
-  }else if (yPlayer1 > ymax ) {
+   }else if (yPlayer1 > ymax ) {
       yPlayer1 = ymax ;
-  }
+   }
    
   if ( yPlayer2 < 0 ) {
       yPlayer2 = 0;
-  }else if (yPlayer2 > ymax ) {
+   }else if (yPlayer2 > ymax ) {
       yPlayer2 = ymax;
-  }
+   }
   
   drawPlayerAt ( xBar1, yPlayer1, color(0, 0, 255));
   drawPlayerAt (xBar2 , yPlayer2, color(0, 255, 255));
@@ -127,31 +120,31 @@ void ball(){
   
   if (xCercle < xBar1 + barWidth ){
     println("c'est PERDUUUUUUU — Looser one");
-  }else if (xCercle > xBar2 ){
+   }else if (xCercle > xBar2 ){
     println("c'est PERDUUUUU — Looooser Twooe");
-  }else {
+   }else {
   
     if (yCercle < rCercle) {
         yCercle = rCercle;
         yCercleIncrement = -yCercleIncrement;
-    }else if(yCercle > height - rCercle) {
+     }else if(yCercle > height - rCercle) {
        yCercle = height - rCercle; 
        yCercleIncrement = -yCercleIncrement;
-    }
+     }
     
     
      if(leftCercle <= xBar1 + barWidth && yCercle >= yPlayer1 && yCercle <= yPlayer1 + barHeight && xCercleIncrement < 0) {
          xCercleIncrement = -xCercleIncrement;
     }
-      if(rightCercle >= xBar2 && yCercle >= yPlayer2 && yCercle <+ yPlayer2 + barHeight && xCercleIncrement > 0){
+     if(rightCercle >= xBar2 && yCercle >= yPlayer2 && yCercle <+ yPlayer2 + barHeight && xCercleIncrement > 0){
          xCercleIncrement = -xCercleIncrement;
-   
      }
   }
+  
+  
  fill(255, 250,231);
  circle(xCercle, yCercle, dCercle);
 
-  
 }
 
 
